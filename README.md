@@ -20,11 +20,11 @@ This software is meets the standard set forth by the company and can be used wit
 run the following commands on the image master
 ```
 docker build -t eaplicense .
-ip=oc get service | grep docker-registry | awk '{print $2}'
+ip=`oc get service | grep docker-registry | awk '{print $2}'`
 oadm policy add-role-to-user system:image-builder <your user> -n openshift
 oc login
 token=`oc whoami -t`
-docker login -u <your user> -e ankledeep@water.com -p $token <your ip>:5000
+docker login -u <your user> -e ankledeep@water.com -p $token $ip:5000
 docker tag eaplicense $ip:5000/openshift/eaplicense
 docker push $ip:5000/openshift/eaplicense
 ```
