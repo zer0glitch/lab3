@@ -7,7 +7,6 @@ FROM registry.access.redhat.com/jboss-eap-6/eap-openshift:6.4
 
 EXPOSE 8080 8888
 
-$JBOSS_HOME/standalone/deployments/ROOT.war
 COPY rhc-ose-license.txt $JBOSS_HOME/
 ```
 create rhc-ose-license.txt
