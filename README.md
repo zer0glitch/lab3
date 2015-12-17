@@ -7,6 +7,7 @@ FROM registry.access.redhat.com/jboss-eap-6/eap-openshift:6.4
 
 EXPOSE 8080 8888
 
+COPY ticket-monster.war $JBOSS_HOME/
 COPY rhc-ose-license.txt $JBOSS_HOME/
 ```
 create rhc-ose-license.txt
@@ -18,6 +19,7 @@ This software is meets the standard set forth by the company and can be used wit
 ```
 run the following commands on the image master
 ```
+docker build -t eaplicense .
 ip=oc get service | grep docker-registry | awk '{print $2}'
 oadm policy add-role-to-user system:image-builder <your user> -n openshift
 oc login
